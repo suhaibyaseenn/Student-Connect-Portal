@@ -21,16 +21,35 @@ export default function StudentLogin() {
 
   return (
     <div className="min-h-screen login-gradient pattern-overlay flex flex-col">
-      <header className="w-full py-4 px-6">
+      <header className="w-full py-4 px-6 flex items-center justify-between">
+        <a
+          href="https://gdcbemina.edu.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3"
+          data-testid="link-back-to-website"
+        >
+          <img
+            src="https://gdcbemina.edu.in/upload/logo44.png"
+            alt="GDC Bemina Logo"
+            className="w-14 h-14 object-contain bg-white rounded-full p-1 shadow-lg"
+            data-testid="img-header-logo"
+          />
+          <div className="hidden sm:block text-left">
+            <h2 className="text-white font-semibold text-sm leading-tight">Abdul Ahad Azad Memorial</h2>
+            <p className="text-white/80 text-xs">Degree College, Bemina</p>
+          </div>
+        </a>
         <a
           href="https://gdcbemina.edu.in/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium"
-          data-testid="link-back-to-website"
+          data-testid="link-main-website"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Main Website
+          <span className="hidden sm:inline">Back to Main Website</span>
+          <span className="sm:hidden">Back</span>
         </a>
       </header>
 
