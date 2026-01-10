@@ -2,13 +2,49 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar, GraduationCap, Lock, User, ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { Calendar, Lock, User, ArrowLeft, ChevronDown, Menu, X, Phone, Mail } from "lucide-react";
+
+const navItems = [
+  { label: "Home", href: "https://gdcbemina.edu.in/" },
+  { 
+    label: "About Us", 
+    href: "#",
+    dropdown: [
+      { label: "College Profile", href: "https://gdcbemina.edu.in/page.php?slug=college-profile" },
+      { label: "Mission & Vision", href: "https://gdcbemina.edu.in/page.php?slug=vision-and-mission" },
+      { label: "Core Values", href: "https://gdcbemina.edu.in/page.php?slug=our-core-values" },
+    ]
+  },
+  { 
+    label: "Academics", 
+    href: "#",
+    dropdown: [
+      { label: "Programmes", href: "https://gdcbemina.edu.in/page.php?slug=programmes" },
+      { label: "Departments", href: "https://gdcbemina.edu.in/departments.php" },
+      { label: "Examination", href: "https://gdcbemina.edu.in/page.php?slug=examination" },
+    ]
+  },
+  { label: "Library", href: "https://gdcbemina.edu.in/page.php?slug=library-" },
+  { label: "IQAC", href: "https://gdcbemina.edu.in/page.php?slug=iqac-2546" },
+  { 
+    label: "Facilities", 
+    href: "#",
+    dropdown: [
+      { label: "Hostel", href: "https://gdcbemina.edu.in/page.php?slug=hostel" },
+      { label: "Sports", href: "https://gdcbemina.edu.in/page.php?slug=sports" },
+      { label: "Scholarships", href: "https://gdcbemina.edu.in/page.php?slug=digital-j-k-" },
+    ]
+  },
+  { label: "Alumni", href: "https://gdcbemina.edu.in/almuni-registration.php" },
+  { label: "Contact", href: "https://gdcbemina.edu.in/contact.php" },
+];
 
 export default function StudentLogin() {
   const [registrationNumber, setRegistrationNumber] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,53 +56,125 @@ export default function StudentLogin() {
   };
 
   return (
-    <div className="min-h-screen login-gradient pattern-overlay flex flex-col">
-      <header className="w-full py-4 px-6 flex items-center justify-between">
-        <a
-          href="https://gdcbemina.edu.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3"
-          data-testid="link-back-to-website"
-        >
-          <img
-            src="https://gdcbemina.edu.in/upload/logo44.png"
-            alt="GDC Bemina Logo"
-            className="w-14 h-14 object-contain bg-white rounded-full p-1 shadow-lg"
-            data-testid="img-header-logo"
-          />
-          <div className="hidden sm:block text-left">
-            <h2 className="text-white font-semibold text-sm leading-tight">Abdul Ahad Azad Memorial</h2>
-            <p className="text-white/80 text-xs">Degree College, Bemina</p>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="bg-primary text-white text-xs py-2 px-4">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1">
+              <Phone className="w-3 h-3" />
+              Admission: 01943510729
+            </span>
+            <span className="flex items-center gap-1">
+              <Mail className="w-3 h-3" />
+              support@gdcbemina.edu.in
+            </span>
           </div>
-        </a>
-        <a
-          href="https://gdcbemina.edu.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium"
-          data-testid="link-main-website"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span className="hidden sm:inline">Back to Main Website</span>
-          <span className="sm:hidden">Back</span>
-        </a>
+          <div className="flex items-center gap-3">
+            <span className="text-yellow-300 font-medium">Student Login</span>
+            <a href="https://gdcbemina.edu.in/" className="hover:text-yellow-300 transition-colors">Faculty Login</a>
+          </div>
+        </div>
+      </div>
+
+      <header className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between py-3">
+            <a
+              href="https://gdcbemina.edu.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3"
+              data-testid="link-back-to-website"
+            >
+              <img
+                src="https://gdcbemina.edu.in/upload/logo44.png"
+                alt="GDC Bemina Logo"
+                className="w-16 h-16 object-contain"
+                data-testid="img-header-logo"
+              />
+              <div className="hidden md:block text-left">
+                <h1 className="text-primary font-bold text-lg leading-tight">Abdul Ahad Azad Memorial Degree College</h1>
+                <p className="text-muted-foreground text-xs">عبدالاحد ازاد میموریل ڈگری کالج • अब्दुल अहद आज़ाद मेमोरियल डिग्री कॉलेज</p>
+                <p className="text-muted-foreground text-xs">Bemina, Srinagar, J&K</p>
+              </div>
+            </a>
+            
+            <button
+              className="lg:hidden p-2 text-primary"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-testid="button-mobile-menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        <nav className="bg-primary hidden lg:block">
+          <div className="max-w-7xl mx-auto px-4">
+            <ul className="flex items-center">
+              {navItems.map((item) => (
+                <li 
+                  key={item.label} 
+                  className="relative group"
+                  onMouseEnter={() => item.dropdown && setOpenDropdown(item.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 px-4 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+                    data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {item.label}
+                    {item.dropdown && <ChevronDown className="w-3 h-3" />}
+                  </a>
+                  {item.dropdown && openDropdown === item.label && (
+                    <div className="absolute top-full left-0 bg-white shadow-lg rounded-b-md min-w-48 py-2 z-50">
+                      {item.dropdown.map((sub) => (
+                        <a
+                          key={sub.label}
+                          href={sub.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                          data-testid={`nav-sub-${sub.label.toLowerCase().replace(/\s+/g, '-')}`}
+                        >
+                          {sub.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+
+        {mobileMenuOpen && (
+          <nav className="lg:hidden bg-white border-t">
+            <ul className="py-2">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-3 text-foreground text-sm font-medium hover:bg-muted transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-4 py-8">
+      <main className="flex-1 flex items-center justify-center px-4 py-12 login-gradient pattern-overlay">
         <div className="w-full max-w-md">
           <div className="glass-card rounded-2xl p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="text-center mb-8">
-              <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center p-2">
-                  <img
-                    src="https://gdcbemina.edu.in/upload/logo44.png"
-                    alt="GDC Bemina Logo"
-                    className="w-full h-full object-contain"
-                    data-testid="img-college-logo"
-                  />
-                </div>
-              </div>
               <h1
                 className="font-serif text-2xl font-semibold text-primary mb-1"
                 data-testid="text-page-title"
@@ -74,10 +182,7 @@ export default function StudentLogin() {
                 Student Login
               </h1>
               <p className="text-muted-foreground text-sm">
-                Abdul Ahad Azad Memorial Degree College
-              </p>
-              <p className="text-muted-foreground text-xs mt-1">
-                Bemina, Srinagar
+                Access your academic portal
               </p>
             </div>
 
