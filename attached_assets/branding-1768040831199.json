@@ -1,0 +1,143 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "-apple-system",
+      "count": 88
+    },
+    {
+      "family": "BlinkMacSystemFont",
+      "count": 88
+    },
+    {
+      "family": "Segoe UI",
+      "count": 88
+    },
+    {
+      "family": "Roboto",
+      "count": 88
+    },
+    {
+      "family": "Helvetica Neue",
+      "count": 88
+    },
+    {
+      "family": "Arial",
+      "count": 88
+    },
+    {
+      "family": "Noto Sans",
+      "count": 88
+    },
+    {
+      "family": "sans-serif",
+      "count": 88
+    },
+    {
+      "family": "Apple Color Emoji",
+      "count": 88
+    },
+    {
+      "family": "Segoe UI Emoji",
+      "count": 88
+    }
+  ],
+  "colors": {
+    "primary": "#143356",
+    "accent": "#002147",
+    "background": "#FFFFFF",
+    "textPrimary": "#002147",
+    "link": "#002147"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "-apple-system",
+      "heading": "-apple-system"
+    },
+    "fontStacks": {
+      "body": [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "Noto Sans",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "heading": [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "Noto Sans",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "paragraph": [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "Noto Sans",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ]
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "32px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {},
+  "images": {
+    "logo": "https://gdcbemina.edu.in/upload/logo44.png",
+    "favicon": "https://gdcbemina.edu.in/upload/logo_and_favicon/favicon.png",
+    "ogImage": null
+  },
+  "__framework_hints": [
+    "bootstrap"
+  ],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Strong indicators: header logo linking to homepage, header location, visible, top-left position, highest logo on page, src contains logo, too large (likely banner/og:image, penalty). Score: 102 (clear winner by 102 points)",
+    "confidence": 0.9
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
