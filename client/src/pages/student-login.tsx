@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar, Lock, User, ArrowLeft, ChevronDown, Menu, X, Phone, Mail } from "lucide-react";
+import { Calendar, Lock, User, ChevronDown, Menu, X, Phone, Mail } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "https://gdcbemina.edu.in/" },
@@ -45,14 +46,22 @@ export default function StudentLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [, setLocation] = useLocation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
+    
     setTimeout(() => {
       setIsLoading(false);
-      alert("Login functionality would connect to the actual GDC Bemina student portal.");
-    }, 1500);
+      if (registrationNumber === "123" && dateOfBirth === "2001-01-01") {
+        setLocation("/profile");
+      } else {
+        setError("Invalid registration number or date of birth. Try: 123 and 01/01/2001");
+      }
+    }, 1000);
   };
 
   return (
@@ -229,6 +238,12 @@ export default function StudentLogin() {
                   />
                 </div>
               </div>
+
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm" data-testid="text-error">
+                  {error}
+                </div>
+              )}
 
               <Button
                 type="submit"
