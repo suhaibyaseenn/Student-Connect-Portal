@@ -56,10 +56,13 @@ export default function StudentLogin() {
     
     setTimeout(() => {
       setIsLoading(false);
-      if (registrationNumber === "123" && dateOfBirth === "2001-01-01") {
+      // Normalized check for CUS credentials
+      const normalizedReg = registrationNumber.trim().toLowerCase();
+      if ((normalizedReg === "123" && dateOfBirth === "2001-01-01") || 
+          (normalizedReg === "cus-23-aaa-10508" && dateOfBirth === "2006-03-01")) {
         setLocation("/profile");
       } else {
-        setError("Invalid registration number or date of birth. Try: 123 and 01/01/2001");
+        setError("Invalid credentials. Try: cus-23-aaa-10508 and 01/03/2006");
       }
     }, 1000);
   };
